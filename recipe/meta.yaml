@@ -1,5 +1,7 @@
 {% set name = "ruby-rc4" %}
 {% set version = "0.1.5" %}
+{% set hash = "00cc40a39d20b53f5459e7ea006a92cf584e9bc275e2a6f7aa1515510e896c03" %}
+{% set build = 2 %}
 
 package:
   name: rb-{{ name|lower }}
@@ -7,11 +9,10 @@ package:
 
 source:
   - url: https://rubygems.org/downloads/{{ name }}-{{ version }}.gem
-    sha256: 00cc40a39d20b53f5459e7ea006a92cf584e9bc275e2a6f7aa1515510e896c03
-
+    sha256: {{ hash }}
 build:
   noarch: generic
-  number: 1
+  number: {{ build }}
   script:
     - gem install -N -l -V --norc --ignore-dependencies -n $PREFIX/bin {{ name }}-{{ version }}.gem
     - gem unpack {{ name }}-{{ version }}.gem
